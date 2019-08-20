@@ -45,3 +45,8 @@ Then, we only need to specify the city:
 
     python weather.py --city=Oxford
     Weather forecast for tomorrow in Oxford (UK): Clear, Temperature 18.35
+In case the city is not found, the application will throw an error. For example, if we try to get the weather 
+for Madrid while having "UK" as our default country code:
+
+    python weather.py --city="Madrid"
+    An error ocurred: (404) City not found.
