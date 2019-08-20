@@ -32,15 +32,15 @@ After that, we access the new directory and install the requirements:
     Required named arguments:
       --city CITY        City in which to check the weather.
 
-   
 Therefore, if we wanted to get the weather for London we would do the following:
 
     python weather.py --city=London --country=UK
     Weather forecast for tomorrow in London (UK): Clear, Temperature 19.36
 
 Alternatively,  we can specify the default country code in the config file, like this:
-
-    default_country_code =  "UK"
+```python
+default_country_code =  "UK"
+````
 Then, we only need to specify the city:
 
     python weather.py --city=Oxford
