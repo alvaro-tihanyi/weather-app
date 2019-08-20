@@ -7,9 +7,9 @@ import json
 from argument_parser import args
 # the config file contains the api key so it must not 
 # be in the repository
-from config import app_id
+from config import app_id, default_country_code
 
-country_code = "ES"
+country_code = default_country_code
 if args.country is not None:
     country_code = args.country
 
