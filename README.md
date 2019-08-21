@@ -54,3 +54,6 @@ Finally, here is a list of cities to test de application:
 * Bilbao
 * Sevilla
 * Zaragoza
+
+## Time spent
+Approximately 9 hours.
