@@ -21,5 +21,5 @@ class Forecast:
 
             print("Weather forecast for tomorrow in " + 
                 self.city + " (" + self.country + "): " + 
-                    weather["main"] + ", Temperature " + str(main["temp"])
+                    weather["main"] + ", Temperature " + (str(main["temp"]) + " ºC")
             )

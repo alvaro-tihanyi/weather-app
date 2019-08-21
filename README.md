@@ -4,7 +4,7 @@ A Python application to check tomorrow's weather in a specific city.
 
 ## Requirements
 * Python3.6
-* An [OpenWeather](https://openweathermap.org/) API Key
+* An [OpenWeatherMap](https://openweathermap.org/) API Key
 
 ## Installation
 First of all, we clone the repository:
