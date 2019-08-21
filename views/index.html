@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <script src="https://kit.fontawesome.com/9cbb7a4d9d.js"></script><link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all"><link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css" media="all"><link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css" media="all">
+        <style>
+            input:focus {
+                outline: none;
+            }
+        </style>
+    </head>
+    <body style="display: flex;flex-direction: column;">
+    {% block content %}
+    <div style="padding: -1vh;margin-left: auto;margin-right: auto;">
+        <h2 style="font-size: 6vh;">ACME Weather Forecast</h2>
+        <form action="/" method="POST" style="
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;">
+            <div style="
+            flex: 1;
+            display: flex;
+            border: 1px solid gray;
+            flex-direction: row;
+            border-radius: 3px;">
+                <i class="fas fa-search" aria-hidden="true" style="
+                padding: 0vh 0.7vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin-left: 1vh;">   
+                </i>
+                <input name="city" value="{% if forecast %}{{forecast.city}}{% endif %}" style="padding: 0.7vh;border: none;flex: 1;" placeholder="Palma de Mallorca">
+            </div>
+            <button type="submit">Search</button>
+        </form>
+        <div>
+            <div style="border: 2px solid gray;border-radius: 1vh;height: 40vh;display: flex;flex-direction: column;flex:1">
+                {% if forecast %}
+                <span style="padding: 2vh;margin: 0vh auto;">
+                    {% if not "error" in forecast %}
+                    Weather forecast for {{forecast.city}} on {{forecast.date}} 
+                    {% else %}
+                    {{forecast.error}}
+                    {% endif %}
+                </span>
+                <div style="display: flex; justify-content: space-around; align-items: center">
+                    <i class="fas fa-{{forecast.icon}}" style="font-size: 12vh;align-self: center;margin-left: 2vh;margin-bottom: auto;margin-top: 6vh;"></i>
+                    {% if not "error" in forecast %}
+                        <span style="font-size: 6vh;margin-top: 6vh;">{{forecast.temperature}}</span>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endblock %}
+    </body>
+</html>

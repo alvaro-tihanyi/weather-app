@@ -14,7 +14,7 @@ parser.add_argument(
 required_args = parser.add_argument_group("Required named arguments")
 required_args.add_argument(
     "--city", 
-    help="City in which to check the weather.", 
+    help="City in which to check the weather.",
     required=True
 )
 
