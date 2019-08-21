@@ -10,13 +10,13 @@ A Python application to check tomorrow's weather in a specific city.
 ## Installation
 First of all, we clone the repository:
 
-    git clone https://github.com/alvaro-tihanyi/weather-app.git
+    > git clone https://github.com/alvaro-tihanyi/weather-app.git
 **Note**: Remember to have a Python3.7 environment to be able to install and use the application.
 
 After that, we access the new directory and install the requirements:
   
-    cd weather-app
-    pip install -r requirements.txt
+    > cd weather-app
+    > pip install -r requirements.txt
 
 
 ## Usage
