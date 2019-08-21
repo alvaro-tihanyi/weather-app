@@ -50,3 +50,6 @@ for Madrid while having "UK" as our default country code:
 
     python weather.py --city="Madrid"
     An error ocurred: (404) City not found.
+
+## Time spent
+Approximately 4 hours.
