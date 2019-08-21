@@ -5,28 +5,36 @@
             input:focus {
                 outline: none;
             }
+            form {
+                display: flex;
+                flex-direction: row;
+                align-items: stretch;
+            }
+            #search-box {
+                flex: 1;
+                display: flex;
+                border: 1px solid gray;
+                flex-direction: row;
+                border-radius: 3px;
+            }
+
+            #search-box i {
+                padding: 0vh 0.7vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin-left: 1vh;
+            }
+
         </style>
     </head>
     <body style="display: flex;flex-direction: column;">
     {% block content %}
     <div style="padding: -1vh;margin-left: auto;margin-right: auto;">
         <h2 style="font-size: 6vh;">ACME Weather Forecast</h2>
-        <form action="/" method="POST" style="
-        display: flex;
-        flex-direction: row;
-        align-items: stretch;">
-            <div style="
-            flex: 1;
-            display: flex;
-            border: 1px solid gray;
-            flex-direction: row;
-            border-radius: 3px;">
-                <i class="fas fa-search" aria-hidden="true" style="
-                padding: 0vh 0.7vh;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                margin-left: 1vh;">   
+        <form action="/" method="POST">
+            <div id="search-box">
+                <i class="fas fa-search" aria-hidden="true">   
                 </i>
                 <input name="city" value="{% if forecast %}{{forecast.city}}{% endif %}" style="padding: 0.7vh;border: none;flex: 1;" placeholder="Palma de Mallorca">
             </div>

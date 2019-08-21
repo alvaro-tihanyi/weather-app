@@ -45,6 +45,7 @@ class Forecast:
             weather = self.most_frequent(weather_list)
             temperature = sum(temperature_list) / len(temperature_list)
             
+            # we get the appropriate suffix for tomorrow
             if 11 <= tomorrow.day <= 13:
                 day_suffix = "th"
             else:
