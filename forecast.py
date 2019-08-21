@@ -1,5 +1,6 @@
 import requests
 import json
+import datetime
 
 class Forecast:
     def __init__(self, city, country, app_id):
@@ -7,19 +8,66 @@ class Forecast:
         self.country = country
         self.app_id = app_id
 
+    def most_frequent(self, List): 
+        counter = 0
+        num = List[0] 
+        
+        for i in List: 
+            curr_frequency = List.count(i) 
+            if curr_frequency> counter: 
+                counter = curr_frequency 
+                num = i 
+    
+        return num 
+
     def get_tomorrow(self):
         forecast = requests.get(
-            "https://api.openweathermap.org/data/2.5/forecast?units=metric&q=" + self.city  + "," + self.country + "&appid=" + self.app_id)
+            "https://api.openweathermap.org/data/2.5/forecast?cnt=16&units=metric&q=" + self.city  + "," + self.country + "&appid=" + self.app_id)
+            # since the api gives us an item for every 3 hours
+            # given that we can only receive a maximum of 8 items per day we specify a count of 16 
+            # to remove several days that we don't need
         forecast_json = forecast.json()
 
         if forecast_json['cod'] != '200':
             print("An error ocurred: (" + forecast_json['cod'] + ") " + forecast_json['message'].capitalize() + ".")
         else:
-            tomorrow_forecast = forecast_json["list"][0] # we only want tomorrow's forecast so we retrive only the first element of the list
-            weather = tomorrow_forecast["weather"][0] # in the response, weather is a list (although it only has a single element in most cases)
-            main = tomorrow_forecast['main']
+            tomorrow = datetime.date.today() + datetime.timedelta(days=1)
+            weather_list = []
+            temperature_list = []
+
+            # we store only the items that belong to tomorrow
+            for item in forecast_json["list"]:
+                if datetime.date.fromisoformat(item["dt_txt"].split(" ")[0]) == tomorrow:
+                    weather_list.append(item["weather"][0]["main"]) # in the response, weather is a list (although it only has a single element in most cases)
+                    temperature_list.append(item["main"]["temp"])
+            
+            # we get the most frequent weather type and the average temperature for tomorrow
+            weather = self.most_frequent(weather_list)
+            temperature = sum(temperature_list) / len(temperature_list)
 
             print("Weather forecast for tomorrow in " + 
                 self.city + " (" + self.country + "): " + 
-                    weather["main"] + ", Temperature " + (str(main["temp"]) + " ºC")
+                    weather + ", Temperature " + (str(round(temperature)) + " ºC")
             )
+
+
+
+
+        forecast_json = forecast.json()
+
+        if forecast_json['cod'] != '200':
+            return ({'error': "An error ocurred: (" + forecast_json['cod'] + ") " + forecast_json['message'].capitalize() + "."})
+        else:
+            tomorrow = datetime.date.today() + datetime.timedelta(days=1)
+            weather_list = []
+            temperature_list = []
+
+            # we store only the items that belong to tomorrow
+            for item in forecast_json["list"]:
+                if datetime.date.fromisoformat(item["dt_txt"].split(" ")[0]) == tomorrow:
+                    weather_list.append(item["weather"][0]["main"]) # in the response, weather is a list (although it only has a single element in most cases)
+                    temperature_list.append(item["main"]["temp"])
+            
+            # we get the most frequent weather type and the average temperature for tomorrow
+            weather = self.most_frequent(weather_list)
+            temperature = sum(temperature_list) / len(temperature_list)
