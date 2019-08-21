@@ -1,7 +1,5 @@
 # import libraries
 from argument_parser import args
-# the config file contains the api key so it must not 
-# be in the repository
 try:
     from config import app_id, default_country_code
 except ImportError as import_error:
