@@ -20,7 +20,7 @@ After that, we access the new directory and install the requirements:
 
 
 ## Usage
-**Note**: By default, the application searchs for cities in Spain (country code ES), if we want to search cities in another country we need to specify it in the config.py file. For example:
+**Note**: By default, the application searches for cities in Spain (country code ES), if we want to search cities in another country we need to specify it in the config.py file. For example:
 
 ```python
 default_country_code = "UK"
@@ -29,15 +29,15 @@ default_country_code = "UK"
 In order to start the server we need to first configurate flask.
 On linux we would do:
 
-    FLASK_APP=app.py
+    > FLASK_APP=app.py
 
 In case we are in Windows, we would do the following:
 
-    set FLASK_APP=app.py
+    > set FLASK_APP=app.py
     
 Then we run Flask:
 
-    flask run
+    > flask run
     
 We then access our local host (127.0.0.1):
 

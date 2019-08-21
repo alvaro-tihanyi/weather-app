@@ -16,8 +16,6 @@ app = Flask(__name__)
 settings.configure(TEMPLATES=TEMPLATES)
 django.setup()
 
-t = get_template("index.html")
-
 @app.route('/', methods=["GET", "POST"])
 def weather_app():
     context = {}
@@ -40,4 +38,6 @@ def weather_app():
             if context['forecast']['weather'] in icons:
                 context['forecast']['icon'] = icons[context['forecast']['weather']]
 
-    return t.render(context)
+    index = get_template("index.html")
+
+    return index.render(context)
