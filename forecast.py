@@ -8,6 +8,8 @@ class Forecast:
         self.country = country
         self.app_id = app_id
 
+    # we use this method to get the element of a list with more occurrences
+    # for example to get the majoritary kind of weather in a day
     def most_frequent(self, List): 
         counter = 0
         num = List[0] 
